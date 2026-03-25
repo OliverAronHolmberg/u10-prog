@@ -99,6 +99,7 @@ def show_clock():
         print("Tryck på valfri tangent för att gå tillbaka till menyn" + Color.RESET)
         
         time.sleep(0.5)
+        msvcrt.getwch()
 
 while True:
     os.system("cls")
@@ -117,11 +118,11 @@ while True:
 
 while True:
     try:
-        day = int(input("Write the number of a day, (ex. 05): "))
-        month = int(input("Write a number of a month (ex. 04): "))
-        year = int(input("Write a year, (ex. 1939): "))
+        day = int(input("Write the number of a day, (ex. 05, return to quit): "))
+        month = int(input("Write a number of a month (ex. 04, return to quit): "))
+        year = int(input("Write a year, (ex. 1939, return to quit): "))
     except:
-        print("Your input was incorrect")
+        break
     target_date = datetime(year, month, day).date()
 
     todays_date = datetime.now().date()
@@ -134,10 +135,9 @@ while True:
 # 7. ÖVERKURS: Gör en larmklocka eller timer där man kan ställa in tid för nedräkning. Något ska hända när tiden är ute
 while True:
     try:
-        seconds_input = int(input("Hur många sekunder ska timern vara? (t.ex. 13): "))
-    except ValueError:
-        print("Vänligen skriv bara in siffror!")
-        continue
+        seconds_input = int(input("Hur många sekunder ska timern vara? (t.ex. 13, return to quit): "))
+    except:
+        break
 
     end_time = datetime.now().timestamp() + seconds_input
 
