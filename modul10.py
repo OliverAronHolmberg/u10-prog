@@ -20,13 +20,13 @@ print(f"The current date and time is {now}")
 now = datetime.now()
 
 date = now.date()
-time = now.time()
+current_time = now.time()
 
 now = now.strftime("%Y-%m-%d %H:%M")
 
 print(f"The current date and time is {now}")
 print(f"The current date is {date}")
-print(f"The current time is {time}")
+print(f"The current time is {current_time}")
 
 
 # 3. Gör så klockan uppdateras automatiskt
