@@ -99,7 +99,7 @@ def show_clock():
         print("Tryck på valfri tangent för att gå tillbaka till menyn" + Color.RESET)
         
         time.sleep(0.5)
-        msvcrt.getwch()
+    msvcrt.getwch()
 
 while True:
     os.system("cls")
