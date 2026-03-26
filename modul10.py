@@ -1,6 +1,5 @@
 from datetime import datetime
 import msvcrt
-import msvcrt
 import os
 import time
 
@@ -34,8 +33,7 @@ print(f"The current time is {current_time}")
 
 while not msvcrt.kbhit():
     os.system("cls")
-    now = datetime.now()
-    actuall_time = now.time().strftime("%H:%M:%S")
+    actuall_time = time.strftime("%H:%M:%S")
     print(actuall_time)
     time.sleep(1)
 msvcrt.getch()
@@ -46,7 +44,7 @@ msvcrt.getch()
 
 
 running = False
-start_time = None
+start_time = 0
 total_passed_time = 0 
 
 
@@ -55,19 +53,16 @@ while True:
     
     if key == '\r': 
         if running:
-            diff = datetime.now() - start_time
-            total_passed_time += diff.total_seconds()
+            total_passed_time += time.time() - start_time
         break
     
     else:
         if not running:
-            start_time = datetime.now()
+            start_time = time.time()
             running = True
             print(">> Startat")
         else:
-            stop_time = datetime.now()
-            diff = stop_time - start_time
-            total_passed_time += diff.total_seconds()
+            total_passed_time += time.time() - start_time
             running = False
             print(f"Pausat vid: {total_passed_time:.2f}s")
 
@@ -92,7 +87,7 @@ def show_clock():
     
     while not msvcrt.kbhit():
         os.system("cls")
-        current_time = datetime.now().strftime("%H:%M:%S")
+        current_time = time.strftime("%H:%M:%S")
         
         print(Color.GREEN + "Klockan")
         print(f"{current_time}")
@@ -139,14 +134,13 @@ while True:
     except:
         break
 
-    end_time = datetime.now().timestamp() + seconds_input
+    end_time = time.time() + seconds_input
 
-    while datetime.now().timestamp() <end_time:
+    while time.time() < end_time:
         os.system("cls")
 
-        time_left = int(end_time - datetime.now().timestamp())
+        time_left = int(end_time - time.time())
         print(f"{time_left} seconds left")
 
         time.sleep(1)
     print("Timer has ended")
-
